@@ -50,3 +50,8 @@ Finally, the user is prompted with the choice of restarting the program or not.
 * [pandas](https://pandas.pydata.org/) - One of the libraries used for this.
 * [numpy](http://www.numpy.org/) - One of the libraries used for this.
 * [time](https://docs.python.org/2/library/time.html) - One of the libraries used for this.
+
+
+# Author:
+
+ * [Ahmed Ashraf](https://github.com/ahmedashraffcih) - Sole author for this program.
