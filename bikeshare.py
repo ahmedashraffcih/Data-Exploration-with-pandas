@@ -121,7 +121,7 @@ def time_stats(df):
     # display the most common month
     common_month = df['month'].mode()[0]
 
-    print(f"Most Common Month (1 = January,...,6 = June): {common_month}")
+    print(f"Most Common Month: {common_month}")
 
     # display the most common day of week
     common_day = df['day_of_week'].mode()[0]
@@ -212,7 +212,7 @@ def user_stats(df):
     # Display counts of gender
     try:
         gender = df['Gender'].value_counts()
-        print(f"\nThe types of users by gender are given below:\n\n{gender}")
+        print(f"\nThe types of users by gender are:\n\n{gender}")
     except:
         print("\nThere is no 'Gender' column in this file.")
 

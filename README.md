@@ -3,9 +3,9 @@ _Udacity project using pandas library in Python for their bikeshare data explora
 
 # Project Overview:
 
-This project focuses on pandas library usage and simple statistics methods to perform a rudimentary analysis on the bikeshare data from three major U.S. cities - Chicago, Washington, and New York City - to display information such as most popular days or most common stations.
+This project relies on the use of pandas library and simple statistical techniques to conduct a rudimentary analysis on bike share data from three major U.S. cities-Chicago, Washington, and New York City-to view details such as the most popular days or the most common stations.
 
-### Running the program:
+### How To run:
 
 You can input 'python bikeshare.py' on your terminal to run this program.
 
@@ -29,8 +29,6 @@ Upon receiving the user input, it goes ahead and asks the user if they want to v
 * The youngest user (if available)
 * The most common birth year amongst users (if available)
 
-Finally, the user is prompted with the choice of restarting the program or not.
-
 # Requirements:
 
 * Language: Python 3.6 or above
@@ -38,7 +36,7 @@ Finally, the user is prompted with the choice of restarting the program or not.
 
 # Project Data:
 
-* chicago.csv - Stored in the data folder, the chicago.csv file is the dataset containing all bikeshare information for the city of Chicago provided by Udacity.
+* chicago.csv - Stored in the Dataset folder, the chicago.csv file is the dataset containing all bikeshare information for the city of Chicago provided by Udacity.
 
 * new_york_city.csv - Dataset containing all bikeshare information for the city of New York provided by Udacity.
 
@@ -54,4 +52,10 @@ Finally, the user is prompted with the choice of restarting the program or not.
 
 # Author:
 
- * [Ahmed Ashraf](https://github.com/ahmedashraffcih) - Sole author for this program.
+ * [Ahmed Ashraf](https://github.com/ahmedashraffcih) - Mentioned all the help received in 'Acknowledgements' section.
+
+ # Acknowledgements: 
+
+* [Aritra Chattaraj](https://github.com/Aritra96/bikeshare-project) - Aritra's repository also contributed to a clearer understanding of the structure of this project and details of certain functions.
+* [pandas docs](http://pandas.pydata.org/pandas-docs/stable/) - pandas documentation was very helpful in understanding the implemention of pandas methods that I used in this project.
+* [Udacity](https://udacity.com) - Udacity's Data Analyst Nanodegree program and their instructors were extremely helpful.
