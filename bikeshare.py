@@ -2,10 +2,11 @@ import time
 import pandas as pd
 import numpy as np
 
-CITY_DATA = { 'chicago': 'Dataset/chicago.csv',
-              'new york city': 'Dataset/new_york_city.csv',
-              'washington': 'Dataset/washington.csv' }
-
+CITY_DATA = { 'chicago': 'Dataset/chicago.csv', 'Chicago': 'Dataset/chicago.csv',
+             'New York City': 'Dataset/new_york_city.csv', 'New york city': 'Dataset/new_york_city.csv',
+              'new york city': 'Dataset/new_york_city.csv', 'washington': 'Dataset/washington.csv',
+             'Washington': 'Dataset/washington.csv' }
+             
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
