@@ -2,10 +2,9 @@ import time
 import pandas as pd
 import numpy as np
 
-CITY_DATA = { 'chicago': 'Dataset/chicago.csv', 'Chicago': 'Dataset/chicago.csv',
-             'New York City': 'Dataset/new_york_city.csv', 'New york city': 'Dataset/new_york_city.csv',
-              'new york city': 'Dataset/new_york_city.csv', 'washington': 'Dataset/washington.csv',
-             'Washington': 'Dataset/washington.csv' }
+CITY_DATA = { 'chicago': 'Dataset/chicago.csv',
+              'new york city': 'Dataset/new_york_city.csv',
+              'washington': 'Dataset/washington.csv' }
              
 def get_filters():
     """
@@ -19,9 +18,9 @@ def get_filters():
     # Intializing empty variable to store city choice
     city = '' # STORE INPUT VALUE 
 
-    print('Hello! Let\'s explore some US bikeshare data!')
+    print("Hello! Let\'s explore some US bikeshare data!")
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    while city not in CITY_DATA.keys():
+    while city.lower() not in CITY_DATA.keys():
         print("\nWelcome to this program.Please choose your city:")
         print("\n- Chicago OR New York City OR Washington")
         city = input().lower()
@@ -31,7 +30,7 @@ def get_filters():
             print("\nAccepted input:\nFull name of city; not case sensitive (e.g. chicago or CHICAGO).\nFull name in title case (e.g. Chicago).")
             print("\nRestarting...")
 
-    print(f"\nYou have chosen {city.title()} as your city.")
+    print("\nYou have chosen {} as your city.".format(city.title()))
 
     # get user input for month (all, january, february, ... , june)
     #Creating a dictionary to store all the months including the 'all' option
@@ -66,9 +65,9 @@ def get_filters():
             print("\nInvalid input. Please try again in one of the accepted input formats.")
             print("\nRestarting...")
 
-    print(f"\nYou have chosen {day.title()} as your day.")
-    print(f"\nYou have chosen to view data for city: {city.upper()}, month/s: {month.upper()} and day/s: {day.upper()}.")
-    print('-'*40)
+    print("\nYou have chosen {} as your day.".format(day.title()))
+    print("\nYou have chosen to view data for city: {}, month/s: {} and day/s: {}.".format(city.upper(),month.upper(),day.upper()))
+    print("-"*40)
     return city, month, day
 
 
@@ -115,26 +114,26 @@ def load_data(city, month, day):
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
-    print('\nCalculating The Most Frequent Times of Travel...\n')
+    print("\nCalculating The Most Frequent Times of Travel...\n")
     start_time = time.time()
 
 
     # display the most common month
     common_month = df['month'].mode()[0]
 
-    print(f"Most Common Month: {common_month}")
+    print("Most Common Month: {}".format(common_month))
 
     # display the most common day of week
     common_day = df['day_of_week'].mode()[0]
 
-    print(f"\nMost Common Day: {common_day}")
+    print("\nMost Common Day: {}".format(common_day))
     
     #Extract hour from the Start Time column to create an hour column
     df['hour'] = df['Start Time'].dt.hour
     # display the most common start hour
     common_hour = df['hour'].mode()[0]
 
-    print(f"\nMost Common Start Hour: {common_hour}")
+    print("\nMost Common Start Hour: {}".format(common_hour))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -143,29 +142,29 @@ def time_stats(df):
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
-    print('\nCalculating The Most Popular Stations and Trip...\n')
+    print("\nCalculating The Most Popular Stations and Trip...\n")
     start_time = time.time()
 
     # display most commonly used start station
     common_start_station = df['Start Station'].mode()[0]
 
-    print(f"The most commonly used start station: {common_start_station}")
+    print("The most commonly used start station: {}".format(common_start_station))
 
 
     # display most commonly used end station
     common_end_station = df['End Station'].mode()[0]
 
-    print(f"\nThe most commonly used end station: {common_end_station}")
+    print("\nThe most commonly used end station: {}".format(common_end_station))
 
     # display most frequent combination of start station and end station trip
     #str.cat to combine two columsn in the df 
     df['Start To End'] = df['Start Station'].str.cat(df['End Station'], sep=' to ')
     comb = df['Start To End'].mode()[0]
 
-    print(f"\nThe most frequent combination of trips are from {comb}.")
+    print("\nThe most frequent combination of trips are from {}.".format(comb))
     
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print("-"*40)
 
 
 def trip_duration_stats(df):
@@ -182,7 +181,7 @@ def trip_duration_stats(df):
     #Finds out the duration in hour and minutes format
     hour, minute = divmod(minute, 60)
 
-    print(f"The total trip duration is {hour} hours, {minute} minutes and {second} seconds.")
+    print("The total trip duration is {} hours, {} minutes and {} seconds.".format(hour,minute,second))
     
     # display mean travel time
     average_duration = round(df['Trip Duration'].mean())
@@ -192,13 +191,13 @@ def trip_duration_stats(df):
 
     if mins > 60:
         hrs, mins = divmod(mins, 60)
-        print(f"\nThe average trip duration is {hrs} hours, {mins} minutes and {sec} seconds.")
+        print("\nThe average trip duration is {} hours, {} minutes and {} seconds.".format(hrs,mins,sec))
     else:
-        print(f"\nThe average trip duration is {mins} minutes and {sec} seconds.")
+        print("\nThe average trip duration is {} minutes and {} seconds.".format(mins,sec))
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print("-"*40)
 
 
 def user_stats(df):
@@ -213,7 +212,7 @@ def user_stats(df):
     # Display counts of gender
     try:
         gender = df['Gender'].value_counts()
-        print(f"\nThe types of users by gender are:\n\n{gender}")
+        print("\nThe types of users by gender are:\n\n{}".format(gender))
     except:
         print("\nThere is no 'Gender' column in this file.")
 
@@ -222,13 +221,13 @@ def user_stats(df):
         earliest = int(df['Birth Year'].min())
         recent = int(df['Birth Year'].max())
         common_year = int(df['Birth Year'].mode()[0])
-        print(f"\nThe earliest year of birth: {earliest}\n\nThe most recent year of birth: {recent}\n\nThe most common year of birth: {common_year}")
+        print("\nThe earliest year of birth: {}\n\nThe most recent year of birth: {}\n\nThe most common year of birth: {}".format(earliest,recent,common_year))
     except:
         print("There are no birth year details in this file.")
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
+    print("-"*40)
 
 def main():
     while True:
@@ -240,7 +239,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
+        restart = input("\nWould you like to restart? Enter yes or no.\n")
         if restart.lower() != 'yes':
             break
 
