@@ -229,18 +229,65 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print("-"*40)
 
+
+def display_raw_data(df):
+    """Displays 5 rows of data from the csv file for the selected city.
+    Args:
+        param1 (df): The data frame you wish to work with.
+    Returns:
+        None.
+    """
+    BIN_RESPONSE_LIST = ['yes', 'no']
+    rdata = ''
+    #counter variable is initialized as a tag to ensure only details from
+    #a particular point is displayed
+    counter = 0
+    while rdata not in BIN_RESPONSE_LIST:
+        print("\nDo you wish to view the raw data?")
+        print("\nAccepted responses:\nYes or yes\nNo or no")
+        rdata = input().lower()
+        #the raw data from the df is displayed if user opts for it
+        if rdata == "yes":
+            print(df.head())
+        elif rdata not in BIN_RESPONSE_LIST:
+            print("\nPlease check your input.")
+            print("Input does not seem to match any of the accepted responses.")
+            print("\nRestarting...\n")
+
+    #Extra while loop here to ask user if they want to continue viewing data
+    while rdata == 'yes':
+        print("Do you wish to view more raw data?")
+        counter += 5
+        rdata = input().lower()
+        #If user opts for it, this displays next 5 rows of data
+        if rdata == "yes":
+             print(df[counter:counter+5])
+        elif rdata != "yes":
+             break
+
+    print('-'*80)
+
+
 def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
-
+        
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+        display_raw_data(df)
 
         restart = input("\nWould you like to restart? Enter yes or no.\n")
-        if restart.lower() != 'yes':
+
+        if restart.lower() == 'yes':
+            continue
+        elif restart.lower() == 'no':
+            break
+        else:
+            print("\nPlease check your input.")
+            print("Input does not seem to match any of the accepted responses.")
             break
 
 
